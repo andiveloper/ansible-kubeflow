@@ -1,7 +1,9 @@
 # ansible-kubeflow
-An Ansible Galaxy role that can be used to deploy kubeflow on an existing Kubernetes cluster
+[![Build Status](https://travis-ci.org/andiveloper/ansible-kubeflow.svg?branch=master)](https://travis-ci.org/andiveloper/ansible-kubeflow)
 
-Specify at least one node of your Kubernetes cluster and assign it the variable `kfctl=True`
+An Ansible Galaxy role that can be used to deploy [kubeflow](https://www.kubeflow.org) on an existing Kubernetes cluster
+
+To get started specify at least one node of your Kubernetes cluster and assign it the variable `kfctl=True`
 
 Sample inventory.ini:
 
