@@ -30,4 +30,4 @@
       cmd: "{{ kubeflow_target_dir }}/kfctl apply -V -f {{ kubeflow_config_url }}"
       chdir: "{{ kubeflow_target_dir }}/{{ kubeflow_deployment_name }}"
     run_once: true
-  when: kfctl == True
+  when: kfctl
