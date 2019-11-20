@@ -1,0 +1,4 @@
+kubeflow_config_url: https://raw.githubusercontent.com/kubeflow/manifests/v0.7-branch/kfdef/kfctl_k8s_istio.0.7.0.yaml
+kubeflow_deployment_name: my-kubeflow
+kubeflow_target_dir: /opt/kubeflow
+kfctl_package_url: https://github.com/kubeflow/kubeflow/releases/download/v0.7.0/kfctl_v0.7.0_linux.tar.gz

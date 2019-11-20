@@ -1,0 +1,33 @@
+---
+- name: Create directory for kubeflow
+  file:
+    path: "{{ kubeflow_target_dir }}"
+    state: directory
+
+- block:
+  - name: Set kfctl package name from URL
+    set_fact: kfctl_package_name={{ kfctl_package_url.split('/')[-1] }}
+  - name: Download kfctl package
+    get_url:
+      url: "{{ kfctl_package_url }}"
+      dest: "{{ kubeflow_target_dir }}/{{ kfctl_package_name }}"
+    tags: hadoop, installHadoop
+
+  - name: Unpack kfctl package
+    unarchive:
+      src: "{{ kubeflow_target_dir }}/{{ kfctl_package_name }}"
+      dest: "{{ kubeflow_target_dir }}"
+      remote_src: yes
+  - name: Create deployment directory
+    file:
+      path: "{{ kubeflow_target_dir }}/{{ kubeflow_deployment_name }}"
+      state: directory
+  - name: Deploy Kubeflow
+    command:
+      cmd: "{{ kubeflow_target_dir }}/kfctl apply -V -f {{ kubeflow_config_url }}"
+      chdir: "{{ kubeflow_target_dir }}/{{ kubeflow_deployment_name }}"
+    run_once: true
+  when: kfctl == True
+
+
+
